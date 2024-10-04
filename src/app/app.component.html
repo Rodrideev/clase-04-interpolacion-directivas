@@ -7,3 +7,129 @@
 {{title}}<br>
 {{frutas}}<br>
 {{persona | json}}
+<app-practica/>
+<hr>
+<h4 appRoundedBlock>Este es el h4</h4>
+<p appRoundedBlock>Este es un parrafo</p>
+
+<hr>
+<h2>Directivas Estructurales</h2>
+<h2>*ngFor</h2>
+<ul>
+    <li *ngFor="let fruta of frutas; let i = index">{{ i }} - {{ fruta }}</li>
+  </ul>
+  
+  <h2>Solo con angular 17 o superior</h2>
+  
+  <ul>
+    @for (fruta of frutas; track $index) {
+    <li *ngIf="$index !== 1">{{ $index }} - {{ fruta }}</li>
+    }
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Aprobado</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of alumnos; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ alumno.nombre }}</td>
+        <td [ngClass]="alumno.estaAprobado ? 'success' : 'error'">
+          {{ alumno.estaAprobado }}
+        </td>
+        <td>
+          <button (click)="alumno.estaAprobado = !alumno.estaAprobado">
+            {{ alumno.estaAprobado ? "DESAPROBAR" : "APROBAR" }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<hr>
+<h2>*ngIf</h2>
+
+<p *ngIf="mostrarParrafo; else noMostrarParrafo">Hola mundo!</p>
+<ng-template #noMostrarParrafo>
+  <p>El elemento original fue oculto</p>
+</ng-template>
+
+<h2>Solo con angular 17 o superior</h2>
+
+@if (mostrarParrafo) {
+<p>Hola mundo!</p>
+} @else {
+<p>El elemento original fue oculto</p>
+}
+<hr>
+<h2>*ngSwitch</h2>
+
+<ng-container [ngSwitch]="estadoCompra">
+  <ng-container *ngSwitchCase="'PENDIENTE'">
+    <p>Su compra esta pendiente...</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="'APROBADA'">
+    <p>Su compra esta aprobada...</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="'ENTREGADA'">
+    <p>Su compra fue entregada...</p>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <p>Error, el estado de su compra es desconocida</p>
+  </ng-container>
+</ng-container>
+
+<h2>Solo con angular 17 o superior</h2>
+
+@switch (estadoCompra) { @case ('PENDIENTE') {
+<p>Su compra esta pendiente...</p>
+} @case ('APROBADA') {
+<p>Su compra esta aprobada...</p>
+} @case ('ENTREGADA') {
+<p>Su compra esta entregada...</p>
+} @default {
+<p>Error, el estado de su compra es desconocida</p>
+} }
+
+<h2>Tipos de enlazamiento</h2>
+
+<!-- ONE WAY BINDING -->
+<input [type]="inputType" />
+<!-- ENTRADA DE DATOS PARA EL INPUT-->
+<button (click)="inputType = 'password'">Click me!</button>
+<!-- SALIDA DE DATOS DESDE EL BOTON-->
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<!-- TWO WAY BINDING -->
+
+<input [(ngModel)]="inputValor" type="text" />
+
+<p>{{ inputValor }}</p>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<hr />
+
+<p>{{ today | date : "dd-MM-YYYY" }}</p>
+
+<p>{{ price | currency }}</p>
+
+<p>{{ inputType | uppercase }}</p>
+<p>{{ inputType | lowercase }}</p>
+<p>{{ inputType | titlecase }}</p>

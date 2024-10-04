@@ -1,0 +1,33 @@
+<hr />
+<h2>ngClass</h2>
+<p [ngClass]="hayError ? 'error' : 'sucess'">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur
+  perferendis debitis dolorem quo harum sed explicabo aut veniam blanditiis
+  error temporibus earum tempore iusto, dolore odit molestiae alias animi?
+</p>
+
+<p [ngClass]="{ error: hayError, success: !hayError }">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur
+  perferendis debitis dolorem quo harum sed explicabo aut veniam blanditiis
+  error temporibus earum tempore iusto, dolore odit molestiae alias animi?
+</p>
+
+<p [class.error]="hayError" [class.success]="!hayError">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur
+  perferendis debitis dolorem quo harum sed explicabo aut veniam blanditiis
+  error temporibus earum tempore iusto, dolore odit molestiae alias animi?
+</p>
+
+<hr />
+<h2>ngStyle</h2>
+<p [ngStyle]="{color: hayError ? 'red' : 'green', fontSize: '20px'}">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi perferendis,
+  molestias iure nihil voluptates recusandae illum beatae in omnis, labore
+  adipisci aut fugiat nostrum velit repudiandae veritatis eos explicabo dolorum.
+</p>
+
+<p [style.font-size]="hayError ? '20px' : '10px'">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugit in,
+    modi minima voluptatibus quidem, enim illum, quod at corporis itaque similique
+    odio esse quaerat dolores molestiae quibusdam. Cupiditate, quidem.
+  </p>
